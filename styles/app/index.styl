@@ -1,8 +1,26 @@
-@import "nib/vendor";
+// set this to true when we're compiling for the habitrpg-shared repo (currenly only used by mobile)
+$shared = false
+
+/*$img = 'img'
+if $shared
+   // need a better way to handle this. Mobile css expecs '../img/*', but other frameworks won't
+   $img = '../img'*/
+
+unless $shared
+    @import "nib/vendor";
+
+    // Vendor Includes - include first so we can override
+    @import "../../public/vendor/bootstrap/css/bootstrap.min.css";
+    @import "../../public/vendor/bootstrap/css/bootstrap-responsive.min.css";
+    @import "../../public/vendor/datepicker/css/datepicker.css";
+
+// Custom includes
+@import './color-vars.styl';
 @import "./female_sprites.styl";
 @import "./male_sprites.styl";
 @import "./shop_sprites.styl";
-@import "./tasks.styl";
+unless $shared
+    @import "./tasks.styl";
 @import "./avatar.styl";
 @import "./customizer.styl";
 @import "./items.styl";
